@@ -24,15 +24,10 @@
             android:id="@+id/spinner3"
             android:layout_width="67dp"
             android:layout_height="26dp"
-            android:layout_marginStart="251dp"
             android:layout_marginEnd="93dp"
-            android:layout_marginBottom="373dp"
+            android:layout_marginBottom="372dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Date"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/date"
@@ -55,21 +50,21 @@
             android:layout_height="26dp"
             android:layout_marginStart="108dp"
             android:layout_marginEnd="236dp"
-            android:layout_marginBottom="373dp"
+            android:layout_marginBottom="372dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/Date"
             android:layout_width="67dp"
             android:layout_height="21dp"
-            android:layout_marginTop="268dp"
+            android:layout_marginTop="271dp"
             android:layout_marginEnd="93dp"
             android:text="Date"
+            app:layout_constraintBottom_toTopOf="@+id/spinner3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/Month"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,12 +72,12 @@
             android:id="@+id/spinner2"
             android:layout_width="75dp"
             android:layout_height="26dp"
-            android:layout_marginStart="176dp"
-            android:layout_marginEnd="160dp"
-            android:layout_marginBottom="373dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="372dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/spinner3"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/spinner"
             app:layout_constraintTop_toBottomOf="@+id/Month" />
 
         <TextView
