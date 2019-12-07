@@ -14,4 +14,165 @@
         android:fontFamily="monospace"
         android:text="Upcoming Comets"
         android:textSize="30sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="67dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="93dp"
+            android:layout_marginBottom="372dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spinner2"
+            app:layout_constraintTop_toBottomOf="@+id/Date" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="67dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="311dp"
+            android:layout_marginEnd="1dp"
+            android:text="Year"
+            app:layout_constraintBottom_toTopOf="@+id/spinner"
+            app:layout_constraintEnd_toStartOf="@+id/Month"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="67dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="108dp"
+            android:layout_marginEnd="236dp"
+            android:layout_marginBottom="373dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/Date"
+            android:layout_width="67dp"
+            android:layout_height="21dp"
+            android:text="Date"
+            tools:layout_editor_absoluteX="251dp"
+            tools:layout_editor_absoluteY="271dp" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="75dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="373dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Month" />
+
+        <TextView
+            android:id="@+id/Month"
+            android:layout_width="75dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="311dp"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="399dp"
+            android:text="Month"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginStart="251dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="373dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Date"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/date2"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="311dp"
+        android:layout_marginEnd="1dp"
+        android:text="Year"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/Month"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="236dp"
+        android:layout_marginBottom="373dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/date3"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:layout_marginTop="311dp"
+        android:layout_marginEnd="93dp"
+        android:text="Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Month"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner6"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="373dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Month" />
+
+    <TextView
+        android:id="@+id/month"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="311dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="399dp"
+        android:text="Month"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </LinearLayout>
