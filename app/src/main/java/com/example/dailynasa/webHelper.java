@@ -1,13 +1,7 @@
 package com.example.dailynasa;
 
-import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
-
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

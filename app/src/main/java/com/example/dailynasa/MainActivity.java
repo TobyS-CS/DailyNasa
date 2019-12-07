@@ -6,22 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.JsonReader;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.simple.parser.*;
-import com.squareup.picasso.*;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
+import com.squareup.picasso.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new ApiAsync(this);
+        new backGroundAsync(this);
         //stores this so that it can be accessed in the onClicks.
         final Context context = this;
         //The Onclick to start the rover activity.
@@ -65,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
     private void pictureStart(Context context) {
         startActivity(new Intent(context, apodActivity.class));
     }
-    private class ApiAsync extends AsyncTask<Void, Void, Void> {
+    private class backGroundAsync extends AsyncTask<Void, Void, Void> {
         private Context context;
         private JSONObject object;
-        public ApiAsync(Context context) {
+        public backGroundAsync(Context context) {
             this.context = context;
             this.execute();
         }
@@ -83,12 +75,11 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
-
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             try {
-                Picasso.with(context).load(getJson().getString("url")).into((ImageView) findViewById(R.id.imageView3));
+                Picasso.get().load(getJson().getString("url")).into((ImageView) findViewById(R.id.imageView3));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -97,5 +88,4 @@ public class MainActivity extends AppCompatActivity {
             return object;
         }
     }
-
 }
