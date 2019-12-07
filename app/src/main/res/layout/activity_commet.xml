@@ -27,7 +27,8 @@
             android:layout_marginEnd="93dp"
             android:layout_marginBottom="372dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Date" />
 
         <TextView
             android:id="@+id/date"
@@ -60,13 +61,11 @@
             android:id="@+id/Date"
             android:layout_width="67dp"
             android:layout_height="21dp"
-            android:layout_marginTop="271dp"
             android:layout_marginEnd="93dp"
             android:text="Date"
-            app:layout_constraintBottom_toTopOf="@+id/spinner3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Month"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/date" />
 
         <Spinner
             android:id="@+id/spinner2"
