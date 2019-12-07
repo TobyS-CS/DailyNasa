@@ -10,20 +10,20 @@
         android:id="@+id/imageView"
         android:layout_width="412dp"
         android:layout_height="452dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="314dp"
         android:layout_height="57dp"
+        android:layout_marginBottom="128dp"
         android:text="THIS IS A STAND IN FOR INFORMATION FROM THE API"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

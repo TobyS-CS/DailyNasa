@@ -2,17 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="599dp"
-        android:layout_height="617dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cropToPadding="false"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background"
-        tools:layout_editor_absoluteX="-128dp"
-        tools:layout_editor_absoluteY="98dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/dailyPictureButton"
@@ -55,12 +57,17 @@
         android:layout_marginTop="48dp"
         android:fontFamily="sans-serif-black"
         android:text="DAILY NASE"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#3F51B5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="36sp"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

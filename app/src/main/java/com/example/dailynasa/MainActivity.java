@@ -4,9 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
+import android.provider.ContactsContract;
+import android.util.JsonReader;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.parser.*;
+import com.squareup.picasso.*;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
+
 
 public class MainActivity extends AppCompatActivity {
 ///TEST COMMENT FOR TEST COMMIT.
@@ -14,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new ApiAsync(this);
         //stores this so that it can be accessed in the onClicks.
         final Context context = this;
         //The Onclick to start the rover activity.
@@ -26,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Button apodButton = findViewById(R.id.dailyPictureButton);
         apodButton.setOnClickListener(unused -> pictureStart(context));
     }
+
     /**
      * starts the Rover activity.
      * @param context this activity.
@@ -47,4 +65,37 @@ public class MainActivity extends AppCompatActivity {
     private void pictureStart(Context context) {
         startActivity(new Intent(context, apodActivity.class));
     }
+    private class ApiAsync extends AsyncTask<Void, Void, Void> {
+        private Context context;
+        private JSONObject object;
+        public ApiAsync(Context context) {
+            this.context = context;
+            this.execute();
+        }
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                String test = new webHelper().fetchApod();
+                object = new JSONObject(test);
+                Log.e("TESTHELP", object.toString());
+            } catch (Exception e) {
+                Log.e("APIASYNC", "FAILED TO GET URL", e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            try {
+                Picasso.with(context).load(getJson().getString("url")).into((ImageView) findViewById(R.id.imageView3));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        public JSONObject getJson() {
+            return object;
+        }
+    }
+
 }
