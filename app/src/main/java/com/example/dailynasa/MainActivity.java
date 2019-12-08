@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Context context = this;
-        new backGroundAsync(context);
+        backGroundAsync async = new backGroundAsync(context);
         //stores this so that it can be accessed in the onClicks.
         //The Onclick to start the rover activity.
         Button roverButton = findViewById(R.id.roverButton);
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         cometButton.setOnClickListener(unused -> cometStart(context));
         //button for apod.
         Button apodButton = findViewById(R.id.dailyPictureButton);
-        apodButton.setOnClickListener(unused -> pictureStart(context));
+        apodButton.setOnClickListener(unused -> pictureStart(context, async.getJson()));
     }
 
     /**
@@ -55,13 +55,17 @@ public class MainActivity extends AppCompatActivity {
      * starts the apod activity.
      * @param context this activity.
      */
-    private void pictureStart(Context context) {
-        startActivity(new Intent(context, apodActivity.class));
+    private void pictureStart(Context context, JSONObject object) {
+        Intent intent = new Intent(context, apodActivity.class);
+        intent.putExtra("Json", object.toString());
+        startActivity(intent);
     }
     private class backGroundAsync extends AsyncTask<Void, Void, Void> {
         private Context context;
         private JSONObject object;
         public backGroundAsync(Context context) {
+            // this stores the context and makes sure that the image is loaded or fails to load
+            // before anything else can be done to it which is why the execute is in here.
             this.context = context;
             this.execute();
         }

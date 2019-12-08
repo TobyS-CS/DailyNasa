@@ -26,7 +26,7 @@ public class CommetActivity extends AppCompatActivity {
         // these lines should give the current date;
         //long millis = System.currentTimeMillis();
         //java.sql.Date date = new java.sql.Date(millis);
-     //   new CometAsync(this, startDate, endDate);
+        //new CometAsync(this, startDate, endDate);
     }
     @Override
     public boolean onSupportNavigateUp(){

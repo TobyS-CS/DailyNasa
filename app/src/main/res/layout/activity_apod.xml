@@ -7,23 +7,22 @@
     tools:context=".apodActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/apodImage"
         android:layout_width="412dp"
         android:layout_height="452dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="314dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="128dp"
+        android:id="@+id/apodDescription"
+        android:layout_width="358dp"
+        android:layout_height="261dp"
+        android:scrollbars="vertical"
         android:text="THIS IS A STAND IN FOR INFORMATION FROM THE API"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
