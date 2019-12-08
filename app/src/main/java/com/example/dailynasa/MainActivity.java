@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -22,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new backGroundAsync(this);
-        //stores this so that it can be accessed in the onClicks.
         final Context context = this;
+        new backGroundAsync(context);
+        //stores this so that it can be accessed in the onClicks.
         //The Onclick to start the rover activity.
         Button roverButton = findViewById(R.id.roverButton);
         roverButton.setOnClickListener(unused -> roverStart(context));
@@ -79,7 +80,12 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             try {
-                Picasso.get().load(getJson().getString("url")).into((ImageView) findViewById(R.id.imageView3));
+                View v = findViewById(R.id.constraint);
+                Picasso.get()
+                        .load(getJson()
+                        .getString("url"))
+                        .resize(v.getWidth(), v.getHeight())
+                        .into((ImageView) findViewById(R.id.imageView3));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

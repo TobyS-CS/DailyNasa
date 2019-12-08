@@ -21,6 +21,12 @@ public class CommetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commet);
         getSupportActionBar().setTitle("Comet Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ///THIS STARTS THE ASYNCTASK TO GET API STUFF
+        // dates in form YYYY-MM-DD;
+        // these lines should give the current date;
+        //long millis = System.currentTimeMillis();
+        //java.sql.Date date = new java.sql.Date(millis);
+     //   new CometAsync(this, startDate, endDate);
     }
     @Override
     public boolean onSupportNavigateUp(){
@@ -28,17 +34,21 @@ public class CommetActivity extends AppCompatActivity {
         // or call onBackPressed()
         return true;
     }
-    private class backGroundAsync extends AsyncTask<Void, Void, Void> {
+    private class CometAsync extends AsyncTask<Void, Void, Void> {
         private Context context;
         private JSONObject object;
-        public backGroundAsync(Context context) {
+        private  String startDate;
+        private  String endDate;
+        public CometAsync(Context context, String startDate, String endDate) {
             this.context = context;
+            this.startDate = startDate;
+            this.endDate = endDate;
             this.execute();
         }
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                String test = new webHelper().fetchApod();
+                String test = new webHelper().fetchComet(startDate, endDate);
                 object = new JSONObject(test);
                 Log.e("TESTHELP", object.toString());
             } catch (Exception e) {
@@ -51,6 +61,8 @@ public class CommetActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             try {
                 ////SEAN DO INFLATION IN HERE IT SHOULD WORK TELL ME IF THERE is AN ISSUE///
+                /* ok  */
+
                 // this is the object representing the comets from web api.
                 JSONObject jsonObject = getJson();
 
