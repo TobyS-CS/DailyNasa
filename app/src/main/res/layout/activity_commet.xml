@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CommetActivity">
+    tools:context=".CommetActivity"
+    android:background="@mipmap/ic_commet_foreground">
 
     <TextView
         android:id="@+id/textView2"
