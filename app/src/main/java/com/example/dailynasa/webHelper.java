@@ -43,7 +43,7 @@ public class webHelper {
         }
         return null;
     }
-    public String fetch(String url) {
+    private String fetch(String url) {
         try {
             String test = new String(getUrlBytes(url));
             Log.e("FETCH", "GOT JSON: " + test);
@@ -56,13 +56,25 @@ public class webHelper {
     public String fetchApod() {
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
+        String test = (fetch(apodBuilder(date)));
+        String url = "";
+        if (!(test.toLowerCase().contains("youtube"))) {
+            url = apodBuilder(date);
+        } else {
+            millis  = System.currentTimeMillis()-24*60*60*1000;
+            date = new java.sql.Date(millis);
+            url = apodBuilder(date);
+        }
+        return fetch(url);
+    }
+    private String apodBuilder ( java.sql.Date date) {
         String url = Uri.parse("https://api.nasa.gov/planetary/apod")
                 .buildUpon()
                 .appendQueryParameter("date", (date.toString()))
                 .appendQueryParameter("api_key", API_KEY)
                 .build()
                 .toString();
-        return fetch(url);
+        return url;
     }
     public String fetchComet(String startDate) {
         long millis = System.currentTimeMillis();

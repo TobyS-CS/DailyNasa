@@ -102,7 +102,6 @@ public class CommetActivity extends AppCompatActivity {
         // make button to launch;
         Button load = findViewById(R.id.load);
         load.setOnClickListener(unused -> new CometAsync(this, startDate));
-
     }
     @Override
     public boolean onSupportNavigateUp(){
@@ -136,8 +135,6 @@ public class CommetActivity extends AppCompatActivity {
             }
         });
     }
-
-
     // Seperate class.
     private class CometAsync extends AsyncTask<Void, Void, Void> {
         private Context context;
