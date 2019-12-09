@@ -23,8 +23,11 @@ public class apodActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         JSONObject object;
         try {
+            //this gets the apod json as a string from main activity
             object = new JSONObject(this.getIntent().getExtras().getString("Json"));
+            // puts the image into the image view.
             Picasso.get().load(object.getString("url")).into((ImageView) findViewById(R.id.apodImage));
+            //this makes the textview scrollable and adds the text.
             TextView description = (TextView) findViewById(R.id.apodDescription);
             description.setMovementMethod(new ScrollingMovementMethod());
             description.setText(object.get("explanation").toString());

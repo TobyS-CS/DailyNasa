@@ -83,40 +83,11 @@ public class CommetActivity extends AppCompatActivity {
         Spinner spinner3;
         spinner3 = findViewById(R.id.spinner3);
         ArrayList<String> arrayList3 = new ArrayList<>();
-        arrayList.add("1");
-        arrayList.add("2");
-        arrayList.add("3");
-        arrayList.add("4");
-        arrayList.add("5");
-        arrayList.add("6");
-        arrayList.add("7");
-        arrayList.add("8");
-        arrayList.add("9");
-        arrayList.add("10");
-        arrayList.add("11");
-        arrayList.add("12");
-        arrayList.add("13");
-        arrayList.add("14");
-        arrayList.add("15");
-        arrayList.add("16");
-        arrayList.add("17");
-        arrayList.add("18");
-        arrayList.add("19");
-        arrayList.add("20");
-        arrayList.add("21");
-        arrayList.add("22");
-        arrayList.add("23");
-        arrayList.add("24");
-        arrayList.add("25");
-        arrayList.add("26");
-        arrayList.add("27");
-        arrayList.add("28");
-        arrayList.add("29");
-        arrayList.add("30");
-        arrayList.add("31");
+        //for (int i = 0; i < monthLength; i++);
         ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList3);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(arrayAdapter3);
+
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

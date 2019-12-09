@@ -69,4 +69,22 @@ public class webHelper {
         }
         return "";
     }
+    public String fetchRover() {
+        long millis = System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        try {
+            String url = Uri.parse("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos")
+                    .buildUpon()
+                    .appendQueryParameter("earth_date", (date.toString()))
+                    .appendQueryParameter("api_key", API_KEY)
+                    .build()
+                    .toString();
+            String test = new String(getUrlBytes(url));
+            Log.e("FETCH APOD", "GOT JSON: " + test);
+            return test;
+        } catch(Exception e) {
+
+        }
+        return "";
+    }
 }
