@@ -15,6 +15,8 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/date"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/date" />
 
     <TextView
@@ -25,6 +27,7 @@
         android:text="TextView"
         android:textColor="#000000"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,10 +37,11 @@
         android:id="@+id/size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="40dp"
         android:text="TextView"
         android:textColor="#000000"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/date"
         app:layout_constraintTop_toTopOf="@+id/date" />
 </androidx.constraintlayout.widget.ConstraintLayout>
