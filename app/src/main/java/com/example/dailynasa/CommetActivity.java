@@ -29,8 +29,6 @@ public class CommetActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Comet Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         Spinner spinner = findViewById(R.id.spinner);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("2019");
@@ -47,6 +45,83 @@ public class CommetActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String Choose = parent.getItemAtPosition(position).toString();
                 Toast.makeText(parent.getContext(), "Selected: " + Choose,
+                        Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
+        Spinner spinner2;
+        spinner2 = findViewById(R.id.spinner2);
+        ArrayList<String> arrayList2 = new ArrayList<>();
+        arrayList.add("1");
+        arrayList.add("2");
+        arrayList.add("3");
+        arrayList.add("4");
+        arrayList.add("5");
+        arrayList.add("6");
+        arrayList.add("7");
+        arrayList.add("8");
+        arrayList.add("9");
+        arrayList.add("10");
+        arrayList.add("11");
+        arrayList.add("12");
+        arrayList.add("13");
+        arrayList.add("14");
+        arrayList.add("15");
+        arrayList.add("16");
+        arrayList.add("17");
+        arrayList.add("18");
+        arrayList.add("19");
+        arrayList.add("20");
+        arrayList.add("21");
+        arrayList.add("22");
+        arrayList.add("23");
+        arrayList.add("24");
+        arrayList.add("25");
+        arrayList.add("26");
+        arrayList.add("27");
+        arrayList.add("28");
+        arrayList.add("29");
+        arrayList.add("30");
+        arrayList.add("31");
+        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList2);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(arrayAdapter2);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String Choosen = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + Choosen,
+                        Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
+        Spinner spinner3;
+        spinner3 = findViewById(R.id.spinner3);
+        ArrayList<String> arrayList3 = new ArrayList<>();
+        arrayList.add("January");
+        arrayList.add("February");
+        arrayList.add("March");
+        arrayList.add("April");
+        arrayList.add("May");
+        arrayList.add("June");
+        arrayList.add("July");
+        arrayList.add("August");
+        arrayList.add("September");
+        arrayList.add("October");
+        arrayList.add("November");
+        arrayList.add("December");
+        ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList3);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner3.setAdapter(arrayAdapter3);
+        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String Choosem = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + Choosem,
                         Toast.LENGTH_LONG).show();
             }
             @Override
