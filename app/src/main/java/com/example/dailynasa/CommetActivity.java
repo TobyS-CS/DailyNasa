@@ -9,21 +9,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommetActivity extends AppCompatActivity {
-    private String Choose;
-    private String Choosen;
-    private String Choosem;
+    private String year;
+    private String month;
+    private String day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +29,36 @@ public class CommetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commet);
         getSupportActionBar().setTitle("Comet Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //final String Choosen = "";
-        Spinner spinner = findViewById(R.id.spinner);
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("2019");
-        arrayList.add("2018");
-        arrayList.add("2017");
-        arrayList.add("2016");
-        arrayList.add("2015");
-        arrayList.add("2014");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
+        Map<String, Integer> monthToDays = new HashMap<String, Integer>();
+        // maps months to the days within them.
+        monthToDays.put("January", 31);
+        monthToDays.put("February", 28);
+        monthToDays.put("March", 31);
+        monthToDays.put("April", 30);
+        monthToDays.put("May", 31);
+        monthToDays.put("June", 30);
+        monthToDays.put("July", 31);
+        monthToDays.put("August", 31);
+        monthToDays.put("September", 30);
+        monthToDays.put("October", 31);
+        monthToDays.put("November", 30);
+        monthToDays.put("December", 31);
+        Spinner spinner = findViewById(R.id.year_spinner);
+        ArrayList<String> yearList = new ArrayList<>();
+        yearList.add("2019");
+        yearList.add("2018");
+        yearList.add("2017");
+        yearList.add("2016");
+        yearList.add("2015");
+        yearList.add("2014");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, yearList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Choose = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + Choose,
+                year = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + year,
                         Toast.LENGTH_LONG).show();
             }
             @Override
@@ -55,63 +66,20 @@ public class CommetActivity extends AppCompatActivity {
             }
         });
         Spinner spinner2;
-        spinner2 = findViewById(R.id.spinner2);
-        ArrayList<String> arrayList2 = new ArrayList<>();
-        arrayList2.add("January");
-        arrayList2.add("February");
-        arrayList2.add("March");
-        arrayList2.add("April");
-        arrayList2.add("May");
-        arrayList2.add("June");
-        arrayList2.add("July");
-        arrayList2.add("August");
-        arrayList2.add("September");
-        arrayList2.add("October");
-        arrayList2.add("November");
-        arrayList2.add("December");
-        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList2);
+        spinner2 = findViewById(R.id.month_spinner);
+        ArrayList<String> monthList = new ArrayList<>();
+        for (String month : monthToDays.keySet()) {
+            monthList.add(month);
+        }
+        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, monthList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(arrayAdapter2);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Choosen = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + Choosen,
-                        Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-            }
-        });
-        Spinner spinner3;
-        spinner3 = findViewById(R.id.spinner3);
-        ArrayList<String> arrayList3 = new ArrayList<>();
-        /*if (arrayList2.equals("February")) {
-            for (int i = 0; i <= 28; i++) {
-                arrayList3.add("" + i);
-            }
-        } else if (arrayList2.equals("September") || arrayList2.equals("April") || arrayList2.equals("June") || arrayList2.equals("November")) {
-            for (int i = 0; i <= 30; i++) {
-                arrayList3.add("" + i);
-            }
-        } else {
-            for (int i = 0; i <= 31; i++) {
-                arrayList3.add("" + i);
-            }
-        }
-*/
-        for (int i = 1; i <= 31; i++) {
-            arrayList3.add("" + i);
-        }
-        ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList3);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(arrayAdapter3);
-
-        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Choosem = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + Choosem,
+                month = parent.getItemAtPosition(position).toString();
+                setDaySpinner(parent, monthToDays);
+                Toast.makeText(parent.getContext(), "Selected: " + month,
                         Toast.LENGTH_LONG).show();
             }
             @Override
@@ -124,7 +92,7 @@ public class CommetActivity extends AppCompatActivity {
         //long millis = System.currentTimeMillis();
         //java.sql.Date date = new java.sql.Date(millis);
         //new CometAsync(this, startDate, endDate);
-        String startDate = Choose + "-" + Choosen + "-" + Choosem;
+        String startDate = year + "-" + month + "-" + day;
 
         //new CometAsync(this, startDate, this.endDate);
     }
@@ -133,6 +101,33 @@ public class CommetActivity extends AppCompatActivity {
         finish();
         // or call onBackPressed()
         return true;
+    }
+    private void setDaySpinner(AdapterView months, Map<String, Integer> monthToDays) {
+
+        Spinner daySpinner;
+        daySpinner = findViewById(R.id.day_spinner);
+        ArrayList<Integer> daysList = new ArrayList<>();
+        for (int i = 1; i <= monthToDays.get(months.getSelectedItem()); i++) {
+            daysList.add(i);
+        }
+        ArrayAdapter<Integer> arrayAdapter3 = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, daysList);
+        arrayAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        daySpinner.setAdapter(arrayAdapter3);
+
+        daySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                day = position + 1 + "";
+                if (day.length() != 2) {
+                    day = 0 + day;
+                }
+                Toast.makeText(parent.getContext(), "Selected: " + (position + 1),
+                Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
     }
     private class CometAsync extends AsyncTask<Void, Void, Void> {
         private Context context;

@@ -16,96 +16,76 @@
             android:id="@+id/date"
             android:layout_width="67dp"
             android:layout_height="21dp"
-            android:layout_marginStart="108dp"
-            android:layout_marginTop="311dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginEnd="24dp"
             android:text="Year"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:typeface="normal"
-            app:layout_constraintBottom_toTopOf="@+id/spinner"
             app:layout_constraintEnd_toStartOf="@+id/Month"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@+id/Month" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/year_spinner"
             android:layout_width="67dp"
             android:layout_height="26dp"
-            android:layout_marginBottom="372dp"
+            android:layout_marginTop="8dp"
             android:background="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/date"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/date" />
+            app:layout_constraintStart_toStartOf="@+id/date"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
 
         <TextView
             android:id="@+id/Date"
             android:layout_width="67dp"
             android:layout_height="21dp"
-            android:layout_marginStart="75dp"
-            android:layout_marginEnd="93dp"
+            android:layout_marginStart="24dp"
             android:text="Date"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:typeface="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.933"
             app:layout_constraintStart_toEndOf="@+id/Month"
-            app:layout_constraintTop_toTopOf="@+id/date" />
+            app:layout_constraintTop_toTopOf="@+id/Month" />
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/day_spinner"
             android:layout_width="67dp"
             android:layout_height="26dp"
-            android:layout_marginEnd="88dp"
-            android:layout_marginBottom="372dp"
+            android:layout_marginTop="8dp"
             android:background="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Date"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintEnd_toEndOf="@+id/Date"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/Date"
+            app:layout_constraintTop_toBottomOf="@+id/Date" />
 
         <TextView
             android:id="@+id/Month"
             android:layout_width="75dp"
             android:layout_height="21dp"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="311dp"
-            android:layout_marginEnd="160dp"
-            android:layout_marginBottom="399dp"
+            android:layout_marginTop="44dp"
             android:text="Month"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:typeface="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/month_spinner"
             android:layout_width="75dp"
             android:layout_height="26dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="158dp"
-            android:layout_marginBottom="372dp"
+            android:layout_marginTop="8dp"
             android:background="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/spinner"
+            app:layout_constraintEnd_toEndOf="@+id/Month"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/Month"
             app:layout_constraintTop_toBottomOf="@+id/Month" />
 
         <TextView
