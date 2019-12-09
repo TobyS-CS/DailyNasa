@@ -156,6 +156,15 @@ public class CommetActivity extends AppCompatActivity {
             try {
                 ////SEAN DO INFLATION IN HERE IT SHOULD WORK TELL ME IF THERE is AN ISSUE///
                 /* ok  */
+                // this is the example.
+//                for (Email email : inboxMessages) {
+//                    View messageChunk = getLayoutInflater().inflate(R.layout.chunk_email, parent, false);
+//                    TextView senderLabel = messageChunk.findViewById(R.id.sender);
+//                    senderLabel.setText(email.getSenderName());
+//                    // Do something with any other views in the chunk...
+//                    parent.addView(messageChunk);
+//                }
+                //parent.addView(messageChunk);
 
                 // this is the object representing the comets from web api.
                 JSONObject jsonObject = getJson();
