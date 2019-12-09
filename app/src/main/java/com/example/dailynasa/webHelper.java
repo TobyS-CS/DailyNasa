@@ -58,14 +58,13 @@ public class webHelper {
         java.sql.Date date = new java.sql.Date(millis);
         String test = (fetch(apodBuilder(date)));
         String url = "";
-        if (!(test.toLowerCase().contains("youtube"))) {
-            url = apodBuilder(date);
-        } else {
-            millis  = System.currentTimeMillis()-24*60*60*1000;
+        while ((test.toLowerCase().contains("youtube"))) {
+            millis  = millis-24*60*60*1000;
             date = new java.sql.Date(millis);
             url = apodBuilder(date);
+            test = fetch(url);
         }
-        return fetch(url);
+        return test;
     }
     private String apodBuilder ( java.sql.Date date) {
         String url = Uri.parse("https://api.nasa.gov/planetary/apod")
