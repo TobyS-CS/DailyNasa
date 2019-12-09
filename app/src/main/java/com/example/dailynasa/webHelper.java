@@ -55,12 +55,12 @@ public class webHelper {
         }
         return "";
     }
-    public String fetchComet(String startDate, String endDate) {
+    public String fetchComet(String startDate) {
         long millis = System.currentTimeMillis();
         try {
             java.sql.Date date = new java.sql.Date(millis);
             String url = "https://api.nasa.gov/neo/rest/v1/feed?start_date="
-                    + startDate + "&end_date= " + endDate + "&api_key=" + API_KEY;
+                    + startDate + "&api_key=" + API_KEY;
             String test = new String(getUrlBytes(url));
             Log.e("FETCH comet", "GOT JSON: " + test);
             return test;

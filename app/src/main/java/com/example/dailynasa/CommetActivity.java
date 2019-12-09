@@ -133,17 +133,15 @@ public class CommetActivity extends AppCompatActivity {
         private Context context;
         private JSONObject object;
         private  String startDate;
-        private  String endDate;
         public CometAsync(Context context, String startDate, String endDate) {
             this.context = context;
             this.startDate = startDate;
-            this.endDate = endDate;
             this.execute();
         }
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                String test = new webHelper().fetchComet(startDate, endDate);
+                String test = new webHelper().fetchComet(startDate);
                 object = new JSONObject(test);
                 Log.e("TESTHELP", object.toString());
             } catch (Exception e) {
