@@ -111,7 +111,6 @@ public class CommetActivity extends AppCompatActivity {
         return true;
     }
     private void setDaySpinner(AdapterView months, Map<String, Integer> monthToDays) {
-
         Spinner daySpinner;
         daySpinner = findViewById(R.id.day_spinner);
         ArrayList<Integer> daysList = new ArrayList<>();
@@ -137,6 +136,9 @@ public class CommetActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    // Seperate class.
     private class CometAsync extends AsyncTask<Void, Void, Void> {
         private Context context;
         private JSONObject object;
