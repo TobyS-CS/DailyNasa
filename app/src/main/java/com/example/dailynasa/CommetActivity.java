@@ -83,7 +83,7 @@ public class CommetActivity extends AppCompatActivity {
         Spinner spinner3;
         spinner3 = findViewById(R.id.spinner3);
         ArrayList<String> arrayList3 = new ArrayList<>();
-        if (arrayList2.equals("February")) {
+        /*if (arrayList2.equals("February")) {
             for (int i = 0; i <= 28; i++) {
                 arrayList3.add("" + i);
             }
@@ -96,7 +96,10 @@ public class CommetActivity extends AppCompatActivity {
                 arrayList3.add("" + i);
             }
         }
-
+*/
+        for (int i = 1; i <= 31; i++) {
+            arrayList3.add("" + i);
+        }
         ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList3);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(arrayAdapter3);
