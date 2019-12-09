@@ -65,7 +65,7 @@ public class webHelper {
             Log.e("FETCH comet", "GOT JSON: " + test);
             return test;
         } catch(Exception e) {
-
+            Log.e("FETCH comet", e.getMessage());
         }
         return "";
     }

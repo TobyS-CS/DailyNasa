@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,6 +26,9 @@ public class CommetActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        year = "2019";
+        month = "01";
+        day = "01";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commet);
         getSupportActionBar().setTitle("Comet Activity");
@@ -77,7 +81,10 @@ public class CommetActivity extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                month = parent.getItemAtPosition(position).toString();
+                month = position + "";
+                if (month .length() < 2) {
+                    month = "0" + month;
+                }
                 setDaySpinner(parent, monthToDays);
                 Toast.makeText(parent.getContext(), "Selected: " + month,
                         Toast.LENGTH_LONG).show();
@@ -91,10 +98,11 @@ public class CommetActivity extends AppCompatActivity {
         // these lines should give the current date;
         //long millis = System.currentTimeMillis();
         //java.sql.Date date = new java.sql.Date(millis);
-        //new CometAsync(this, startDate, endDate);
         String startDate = year + "-" + month + "-" + day;
+        // make button to launch;
+        Button load = findViewById(R.id.load);
+        load.setOnClickListener(unused -> new CometAsync(this, startDate));
 
-        //new CometAsync(this, startDate, this.endDate);
     }
     @Override
     public boolean onSupportNavigateUp(){
@@ -133,7 +141,7 @@ public class CommetActivity extends AppCompatActivity {
         private Context context;
         private JSONObject object;
         private  String startDate;
-        public CometAsync(Context context, String startDate, String endDate) {
+        public CometAsync(Context context, String startDate) {
             this.context = context;
             this.startDate = startDate;
             this.execute();
