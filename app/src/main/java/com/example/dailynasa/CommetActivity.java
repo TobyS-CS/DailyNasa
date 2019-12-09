@@ -21,6 +21,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class CommetActivity extends AppCompatActivity {
+    private String Choose;
+    private String Choosen;
+    private String Choosem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class CommetActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String Choose = parent.getItemAtPosition(position).toString();
+                Choose = parent.getItemAtPosition(position).toString();
                 Toast.makeText(parent.getContext(), "Selected: " + Choose,
                         Toast.LENGTH_LONG).show();
             }
@@ -72,7 +75,7 @@ public class CommetActivity extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String Choosen = parent.getItemAtPosition(position).toString();
+                Choosen = parent.getItemAtPosition(position).toString();
                 Toast.makeText(parent.getContext(), "Selected: " + Choosen,
                         Toast.LENGTH_LONG).show();
             }
@@ -107,7 +110,7 @@ public class CommetActivity extends AppCompatActivity {
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String Choosem = parent.getItemAtPosition(position).toString();
+                Choosem = parent.getItemAtPosition(position).toString();
                 Toast.makeText(parent.getContext(), "Selected: " + Choosem,
                         Toast.LENGTH_LONG).show();
             }
@@ -121,6 +124,9 @@ public class CommetActivity extends AppCompatActivity {
         //long millis = System.currentTimeMillis();
         //java.sql.Date date = new java.sql.Date(millis);
         //new CometAsync(this, startDate, endDate);
+        String startDate = Choose + "-" + Choosen + "-" + Choosem;
+
+        //new CometAsync(this, startDate, this.endDate);
     }
     @Override
     public boolean onSupportNavigateUp(){
