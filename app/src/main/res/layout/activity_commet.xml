@@ -8,28 +8,10 @@
     tools:context=".CommetActivity"
     android:background="@mipmap/ic_commet_foreground">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:text="Upcoming Comets"
-        android:textSize="30sp" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <Spinner
-            android:id="@+id/spinner3"
-            android:layout_width="67dp"
-            android:layout_height="26dp"
-            android:layout_marginEnd="93dp"
-            android:layout_marginBottom="372dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Date" />
 
         <TextView
             android:id="@+id/date"
@@ -39,6 +21,11 @@
             android:layout_marginTop="311dp"
             android:layout_marginEnd="1dp"
             android:text="Year"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:typeface="normal"
             app:layout_constraintBottom_toTopOf="@+id/spinner"
             app:layout_constraintEnd_toStartOf="@+id/Month"
             app:layout_constraintHorizontal_bias="0.0"
@@ -64,9 +51,48 @@
             android:layout_height="21dp"
             android:layout_marginEnd="93dp"
             android:text="Date"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:typeface="normal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/Month"
             app:layout_constraintTop_toTopOf="@+id/date" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="67dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="92dp"
+            android:layout_marginBottom="372dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Date"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/Month"
+            android:layout_width="75dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="311dp"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="399dp"
+            android:text="Month"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:typeface="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Spinner
             android:id="@+id/spinner2"
@@ -81,21 +107,25 @@
             app:layout_constraintTop_toBottomOf="@+id/Month" />
 
         <TextView
-            android:id="@+id/Month"
-            android:layout_width="75dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="311dp"
-            android:layout_marginEnd="160dp"
-            android:layout_marginBottom="399dp"
-            android:text="Month"
+            android:id="@+id/textView2"
+            android:layout_width="337dp"
+            android:layout_height="50dp"
+            android:fontFamily="monospace"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:text="Upcoming Comets"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            android:typeface="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.259" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

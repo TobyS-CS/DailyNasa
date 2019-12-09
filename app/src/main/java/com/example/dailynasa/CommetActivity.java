@@ -6,12 +6,19 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class CommetActivity extends AppCompatActivity {
 
@@ -21,6 +28,31 @@ public class CommetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commet);
         getSupportActionBar().setTitle("Comet Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("2019");
+        arrayList.add("2018");
+        arrayList.add("2017");
+        arrayList.add("2016");
+        arrayList.add("2015");
+        arrayList.add("2014");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String Choose = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + Choose,
+                        Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
         ///THIS STARTS THE ASYNCTASK TO GET API STUFF
         // dates in form YYYY-MM-DD;
         // these lines should give the current date;
