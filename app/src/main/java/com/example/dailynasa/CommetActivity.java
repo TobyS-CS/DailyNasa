@@ -54,6 +54,35 @@ public class CommetActivity extends AppCompatActivity {
         Spinner spinner2;
         spinner2 = findViewById(R.id.spinner2);
         ArrayList<String> arrayList2 = new ArrayList<>();
+        arrayList.add("January");
+        arrayList.add("February");
+        arrayList.add("March");
+        arrayList.add("April");
+        arrayList.add("May");
+        arrayList.add("June");
+        arrayList.add("July");
+        arrayList.add("August");
+        arrayList.add("September");
+        arrayList.add("October");
+        arrayList.add("November");
+        arrayList.add("December");
+        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList2);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(arrayAdapter2);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String Choosen = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), "Selected: " + Choosen,
+                        Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
+        Spinner spinner3;
+        spinner3 = findViewById(R.id.spinner3);
+        ArrayList<String> arrayList3 = new ArrayList<>();
         arrayList.add("1");
         arrayList.add("2");
         arrayList.add("3");
@@ -85,35 +114,6 @@ public class CommetActivity extends AppCompatActivity {
         arrayList.add("29");
         arrayList.add("30");
         arrayList.add("31");
-        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList2);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(arrayAdapter2);
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String Choosen = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + Choosen,
-                        Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-            }
-        });
-        Spinner spinner3;
-        spinner3 = findViewById(R.id.spinner3);
-        ArrayList<String> arrayList3 = new ArrayList<>();
-        arrayList.add("January");
-        arrayList.add("February");
-        arrayList.add("March");
-        arrayList.add("April");
-        arrayList.add("May");
-        arrayList.add("June");
-        arrayList.add("July");
-        arrayList.add("August");
-        arrayList.add("September");
-        arrayList.add("October");
-        arrayList.add("November");
-        arrayList.add("December");
         ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList3);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(arrayAdapter3);
