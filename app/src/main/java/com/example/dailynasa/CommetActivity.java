@@ -5,15 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,12 +33,13 @@ public class CommetActivity extends AppCompatActivity {
     private String year;
     private String month;
     private String day;
+    private Context CONTEXT = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        year = "2019";
-        month = "01";
-        day = "01";
+        year = "2015";
+        month = "09";
+        day = "08";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commet);
         getSupportActionBar().setTitle("Comet Activity");
@@ -71,9 +82,11 @@ public class CommetActivity extends AppCompatActivity {
         });
         Spinner spinner2;
         spinner2 = findViewById(R.id.month_spinner);
-        ArrayList<String> monthList = new ArrayList<>();
+        String[] monthList = new String[12];
+        int i = 0;
         for (String month : monthToDays.keySet()) {
-            monthList.add(month);
+            monthList[i] = month;
+            i++;
         }
         ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, monthList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -98,10 +111,16 @@ public class CommetActivity extends AppCompatActivity {
         // these lines should give the current date;
         //long millis = System.currentTimeMillis();
         //java.sql.Date date = new java.sql.Date(millis);
-        String startDate = year + "-" + month + "-" + day;
         // make button to launch;
         Button load = findViewById(R.id.load);
-        load.setOnClickListener(unused -> new CometAsync(this, startDate));
+        load.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((LinearLayout)findViewById(R.id.cometHolder)).removeAllViews();
+                String startDate = year + "-" + month + "-" + day;
+                new CometAsync(CONTEXT, startDate);
+            }
+        });
     }
     @Override
     public boolean onSupportNavigateUp(){
@@ -138,7 +157,7 @@ public class CommetActivity extends AppCompatActivity {
     // Seperate class.
     private class CometAsync extends AsyncTask<Void, Void, Void> {
         private Context context;
-        private JSONObject object;
+        private JsonObject object;
         private  String startDate;
         public CometAsync(Context context, String startDate) {
             this.context = context;
@@ -149,7 +168,9 @@ public class CommetActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 String test = new webHelper().fetchComet(startDate);
-                object = new JSONObject(test);
+                JSONObject toParse = new JSONObject(test);
+                JsonParser parser = new JsonParser();
+                object = (JsonObject) parser.parse(toParse.toString());
                 Log.e("TESTHELP", object.toString());
             } catch (Exception e) {
                 Log.e("APIASYNC", "FAILED TO GET URL", e);
@@ -173,13 +194,31 @@ public class CommetActivity extends AppCompatActivity {
                 //parent.addView(messageChunk);
 
                 // this is the object representing the comets from web api.
-                JSONObject jsonObject = getJson();
+                JsonObject jsonObject = getJson();
+                JsonObject dateArray = jsonObject.get("near_earth_objects").getAsJsonObject().getAsJsonObject();
+                LinearLayout cometHolder = findViewById(R.id.cometHolder);
+                for (JsonElement comet : dateArray.get(startDate).getAsJsonArray()) {
+                    View cometChunk = getLayoutInflater().inflate(R.layout.comet_chunk, cometHolder, false);
+                    ((TextView) cometChunk.findViewById(R.id.name))
+                            .setText(comet.getAsJsonObject().get("name").getAsString());
+                    ((TextView) cometChunk.findViewById(R.id.size))
+                            .setText(comet.getAsJsonObject()
+                                    .get("estimated_diameter").getAsJsonObject()
+                                    .get("meters").getAsJsonObject()
+                                    .get("estimated_diameter_max").getAsString());
+                    for (JsonElement date : comet.getAsJsonObject().get("close_approach_data").getAsJsonArray()) {
+                        ((TextView) (cometChunk.findViewById(R.id.date)))
+                                .setText(date.getAsJsonObject()
+                                        .get("close_approach_date").getAsString());
+                    }
+                    cometHolder.addView(cometChunk);
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        public JSONObject getJson() {
+        public JsonObject getJson() {
             return object;
         }
     }
