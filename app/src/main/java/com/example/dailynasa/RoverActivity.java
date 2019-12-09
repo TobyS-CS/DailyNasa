@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
+import com.google.gson.JsonObject;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -26,10 +29,6 @@ public class  RoverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rover);
         getSupportActionBar().setTitle("Rover Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        recyclerView = (RecyclerView) findViewById(R.id.recycle);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
@@ -70,6 +69,9 @@ public class  RoverActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             try {
+//                JsonObject jsonObject = getJson();
+//                JsonObject dateArray = jsonObject.get("near_earth_objects").getAsJsonObject().getAsJsonObject();
+//                ScrollView cometHolder = findViewById(R.id.imageScroll);
 
             } catch (Exception e) {
                 e.printStackTrace();
