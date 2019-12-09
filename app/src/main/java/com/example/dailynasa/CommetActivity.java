@@ -28,7 +28,7 @@ public class CommetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commet);
         getSupportActionBar().setTitle("Comet Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        //final String Choosen = "";
         Spinner spinner = findViewById(R.id.spinner);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("2019");
@@ -54,18 +54,18 @@ public class CommetActivity extends AppCompatActivity {
         Spinner spinner2;
         spinner2 = findViewById(R.id.spinner2);
         ArrayList<String> arrayList2 = new ArrayList<>();
-        arrayList.add("January");
-        arrayList.add("February");
-        arrayList.add("March");
-        arrayList.add("April");
-        arrayList.add("May");
-        arrayList.add("June");
-        arrayList.add("July");
-        arrayList.add("August");
-        arrayList.add("September");
-        arrayList.add("October");
-        arrayList.add("November");
-        arrayList.add("December");
+        arrayList2.add("January");
+        arrayList2.add("February");
+        arrayList2.add("March");
+        arrayList2.add("April");
+        arrayList2.add("May");
+        arrayList2.add("June");
+        arrayList2.add("July");
+        arrayList2.add("August");
+        arrayList2.add("September");
+        arrayList2.add("October");
+        arrayList2.add("November");
+        arrayList2.add("December");
         ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList2);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(arrayAdapter2);
@@ -83,7 +83,20 @@ public class CommetActivity extends AppCompatActivity {
         Spinner spinner3;
         spinner3 = findViewById(R.id.spinner3);
         ArrayList<String> arrayList3 = new ArrayList<>();
-        //for (int i = 0; i < monthLength; i++);
+        if (arrayList2.equals("February")) {
+            for (int i = 0; i <= 28; i++) {
+                arrayList3.add("" + i);
+            }
+        } else if (arrayList2.equals("September") || arrayList2.equals("April") || arrayList2.equals("June") || arrayList2.equals("November")) {
+            for (int i = 0; i <= 30; i++) {
+                arrayList3.add("" + i);
+            }
+        } else {
+            for (int i = 0; i <= 31; i++) {
+                arrayList3.add("" + i);
+            }
+        }
+
         ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList3);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(arrayAdapter3);

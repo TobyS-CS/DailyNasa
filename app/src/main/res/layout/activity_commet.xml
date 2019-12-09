@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/ic_commet_foreground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
@@ -46,6 +47,7 @@
             android:id="@+id/Date"
             android:layout_width="67dp"
             android:layout_height="21dp"
+            android:layout_marginStart="75dp"
             android:layout_marginEnd="93dp"
             android:text="Date"
             android:textAllCaps="true"
@@ -54,7 +56,7 @@
             android:textSize="20sp"
             android:typeface="normal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.933"
             app:layout_constraintStart_toEndOf="@+id/Month"
             app:layout_constraintTop_toTopOf="@+id/date" />
 
@@ -62,8 +64,9 @@
             android:id="@+id/spinner3"
             android:layout_width="67dp"
             android:layout_height="26dp"
-            android:layout_marginEnd="92dp"
+            android:layout_marginEnd="88dp"
             android:layout_marginBottom="372dp"
+            android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Date"
@@ -96,9 +99,11 @@
             android:layout_width="75dp"
             android:layout_height="26dp"
             android:layout_marginStart="1dp"
+            android:layout_marginEnd="158dp"
             android:layout_marginBottom="372dp"
+            android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/spinner3"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/spinner"
             app:layout_constraintTop_toBottomOf="@+id/Month" />
