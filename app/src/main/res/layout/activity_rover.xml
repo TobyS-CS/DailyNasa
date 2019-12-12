@@ -2,7 +2,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/imageScroll"
+    android:id="@+id/scroller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RoverActivity" />
+    android:background="#000000"
+    android:orientation="vertical"
+    tools:context=".RoverActivity" >
+
+    <LinearLayout
+        android:id="@+id/imageScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+</ScrollView>

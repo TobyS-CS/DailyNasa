@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             try {
                 View v = findViewById(R.id.constraint);
+                String test = getJson().get("url").toString();
                 Picasso.get()
                         .load(getJson()
                         .getString("url"))

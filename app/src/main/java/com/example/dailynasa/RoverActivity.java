@@ -1,7 +1,6 @@
 package com.example.dailynasa;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -11,12 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.squareup.picasso.Picasso;
+import com.google.gson.JsonParser;
+import com.squareup.picasso.*;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class  RoverActivity extends AppCompatActivity {
@@ -29,6 +28,7 @@ public class  RoverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rover);
         getSupportActionBar().setTitle("Rover Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        new RoverAsync(this);
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
@@ -47,7 +47,7 @@ public class  RoverActivity extends AppCompatActivity {
     }
     private class RoverAsync extends AsyncTask<Void, Void, Void> {
         private Context context;
-        private JSONObject object;
+        private JsonObject object;
         public RoverAsync(Context context) {
             // this stores the context and makes sure that the image is loaded or fails to load
             // before anything else can be done to it which is why the execute is in here.
@@ -58,7 +58,9 @@ public class  RoverActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 String test = new webHelper().fetchRover();
-                object = new JSONObject(test);
+                JSONObject toParse = new JSONObject(test);
+                JsonParser parser = new JsonParser();
+                object = (JsonObject) parser.parse(toParse.toString());
                 Log.e("TESTHELP", object.toString());
             } catch (Exception e) {
                 Log.e("RoverAsync", "FAILED TO GET URL", e);
@@ -69,15 +71,21 @@ public class  RoverActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             try {
-//                JsonObject jsonObject = getJson();
-//                JsonObject dateArray = jsonObject.get("near_earth_objects").getAsJsonObject().getAsJsonObject();
-//                ScrollView cometHolder = findViewById(R.id.imageScroll);
-
+                JsonObject jsonObject = getJson();
+                String test;
+                LinearLayout layout = findViewById(R.id.imageScroll);
+                for (JsonElement picture : jsonObject.get("photos").getAsJsonArray()) {
+                    View imageChunk = getLayoutInflater().inflate(R.layout.image_chunk, layout, false);
+                    test = picture.getAsJsonObject().get("img_src").getAsString();
+                    test =  "https:" + test.substring(5);
+                    Picasso.get().load(test).into((ImageView)imageChunk.findViewById(R.id.roverImage));
+                    layout.addView(imageChunk);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        public JSONObject getJson() {
+        public JsonObject getJson() {
             return object;
         }
     }

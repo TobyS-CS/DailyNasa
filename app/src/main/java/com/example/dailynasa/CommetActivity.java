@@ -27,7 +27,9 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class CommetActivity extends AppCompatActivity {
     private String year;
@@ -44,7 +46,7 @@ public class CommetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commet);
         getSupportActionBar().setTitle("Comet Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Map<String, Integer> monthToDays = new HashMap<String, Integer>();
+        Map<String, Integer> monthToDays = new LinkedHashMap<String, Integer>();
         // maps months to the days within them.
         monthToDays.put("January", 31);
         monthToDays.put("February", 28);
@@ -82,20 +84,16 @@ public class CommetActivity extends AppCompatActivity {
         });
         Spinner spinner2;
         spinner2 = findViewById(R.id.month_spinner);
-        String[] monthList = new String[12];
-        int i = 0;
-        for (String month : monthToDays.keySet()) {
-            monthList[i] = month;
-            i++;
-        }
+        String [] monthList = new String[12];
+        monthList = monthToDays.keySet().toArray(monthList);
         ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, monthList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(arrayAdapter2);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                month = position + "";
-                if (month .length() < 2) {
+                month = position + 1 + "";
+                if (month.length() < 2) {
                     month = "0" + month;
                 }
                 setDaySpinner(parent, monthToDays);

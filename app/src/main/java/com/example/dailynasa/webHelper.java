@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class webHelper {
     final String API_KEY = "U8vRzGRmgweqsmKPxmDpPNeRQWpBsgXNZ3zCeJrW";
-    // This code is done with  help from Big Nerd Ranch's Adnroid Programing 3rd Edition second printing, april 2017
+    // This code is done with  help from Big Nerd Ranch's Android Programing 3rd Edition second printing, april 2017
 
     /**
      * @param urlString The url that the data is downloaded from.
@@ -85,9 +85,10 @@ public class webHelper {
     public String fetchRover() {
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
+        String dateString = date.toString().substring(4);
         String url = Uri.parse("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos")
                 .buildUpon()
-                .appendQueryParameter("earth_date", (date.toString()))
+                .appendQueryParameter("earth_date", ("2015" + dateString))
                 .appendQueryParameter("api_key", API_KEY)
                 .build()
                 .toString();
