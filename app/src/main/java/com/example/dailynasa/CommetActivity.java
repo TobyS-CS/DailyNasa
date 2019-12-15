@@ -3,33 +3,32 @@ package com.example.dailynasa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.JsonArray;
+//Json stuff.
+import org.json.JSONObject;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
+//Picasso
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class CommetActivity extends AppCompatActivity {
     private String year;
@@ -179,18 +178,6 @@ public class CommetActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             try {
-                ////SEAN DO INFLATION IN HERE IT SHOULD WORK TELL ME IF THERE is AN ISSUE///
-                /* ok  */
-                // this is the example.
-//                for (Email email : inboxMessages) {
-//                    View messageChunk = getLayoutInflater().inflate(R.layout.chunk_email, parent, false);
-//                    TextView senderLabel = messageChunk.findViewById(R.id.sender);
-//                    senderLabel.setText(email.getSenderName());
-//                    // Do something with any other views in the chunk...
-//                    parent.addView(messageChunk);
-//                }
-                //parent.addView(messageChunk);
-
                 // this is the object representing the comets from web api.
                 JsonObject jsonObject = getJson();
                 JsonObject dateArray = jsonObject.get("near_earth_objects").getAsJsonObject().getAsJsonObject();
@@ -211,13 +198,11 @@ public class CommetActivity extends AppCompatActivity {
                     }
                     cometHolder.addView(cometChunk);
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        public JsonObject getJson() {
-            return object;
+        public JsonObject getJson() { return object;
         }
     }
 }

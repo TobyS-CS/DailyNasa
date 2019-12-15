@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,13 +27,16 @@ public class apodActivity extends AppCompatActivity {
             //this gets the apod json as a string from main activity
             object = new JSONObject(this.getIntent().getExtras().getString("Json"));
             // puts the image into the image view.
-            Picasso.get().load(object.getString("url")).into((ImageView) findViewById(R.id.apodImage));
+            View v = findViewById(R.id.apodImage);
+            Picasso.get()
+                    .load(object.getString("url"))
+                    .into((ImageView) findViewById(R.id.apodImage));
             //this makes the textview scrollable and adds the text.
             TextView description = (TextView) findViewById(R.id.apodDescription);
             description.setMovementMethod(new ScrollingMovementMethod());
             description.setText(object.get("explanation").toString());
             description.setHeight(description.getLineHeight() * description.getLineCount());
-        } catch (JSONException e) {
+        } catch (Exception e) {
             Log.e("Json making error", e.getMessage());
         }
     }

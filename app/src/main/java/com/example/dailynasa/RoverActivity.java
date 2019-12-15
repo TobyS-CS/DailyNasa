@@ -1,7 +1,6 @@
 package com.example.dailynasa;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -19,9 +18,6 @@ import com.squareup.picasso.*;
 import org.json.JSONObject;
 
 public class  RoverActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,15 +25,6 @@ public class  RoverActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Rover Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         new RoverAsync(this);
-    }
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView3);
-
-
-        }
     }
     @Override
     public boolean onSupportNavigateUp(){

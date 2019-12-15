@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         roverButton.setOnClickListener(unused -> roverStart(context));
         //button for comet activity.
         Button cometButton = findViewById(R.id.cometButton);
-        cometButton.setOnClickListener(unused -> cometStart(context));
+        cometButton.setOnClickListener(unused -> cometStart(context, async.getJson()));
         //button for apod.
         Button apodButton = findViewById(R.id.dailyPictureButton);
         apodButton.setOnClickListener(unused -> pictureStart(context, async.getJson()));
@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
      * starts the comet activity.
      * @param context this activity.
      */
-    private void cometStart(Context context) {
+    private void cometStart(Context context, JSONObject object) {
+        Intent intent = new Intent(context, apodActivity.class);
+        intent.putExtra("Json", object.toString());
         startActivity(new Intent(context, CommetActivity.class));
     }
     /**

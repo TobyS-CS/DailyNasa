@@ -9,10 +9,12 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * A helper class the does all the api leg work for daily NASA.
+ */
 public class webHelper {
     final String API_KEY = "U8vRzGRmgweqsmKPxmDpPNeRQWpBsgXNZ3zCeJrW";
     // This code is done with  help from Big Nerd Ranch's Android Programing 3rd Edition second printing, april 2017
-
     /**
      * @param urlString The url that the data is downloaded from.
      * @return returns an array of bytes that is later decoded to give the readable information.
@@ -43,6 +45,12 @@ public class webHelper {
         }
         return null;
     }
+
+    /**
+     *  A general fetch method to reutrn a Json string it aquires via an api call.
+     * @param url the url to send to the api as a get request
+     * @return a json string from the api get request.
+     */
     private String fetch(String url) {
         try {
             String test = new String(getUrlBytes(url));
@@ -53,6 +61,11 @@ public class webHelper {
             return "";
         }
     }
+
+    /**
+     * The fetch method for the picture of the day.
+     * @return the json String from the get request of the picture of the day api.
+     */
     public String fetchApod() {
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
@@ -66,6 +79,12 @@ public class webHelper {
         }
         return test;
     }
+
+    /**
+     * builds the url String for picture of the day api call.
+     * @param date a date to find the picture of the day of.
+     * @return a url as a string.
+     */
     private String apodBuilder ( java.sql.Date date) {
         String url = Uri.parse("https://api.nasa.gov/planetary/apod")
                 .buildUpon()
@@ -75,6 +94,12 @@ public class webHelper {
                 .toString();
         return url;
     }
+
+    /**
+     * Fetches the comet api Json string.
+     * @param startDate the day to start searching for comets
+     * @return The json String from the apu call.
+     */
     public String fetchComet(String startDate) {
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
@@ -82,6 +107,11 @@ public class webHelper {
                 + startDate + "&api_key=" + API_KEY;
         return fetch(url);
     }
+
+    /**
+     * Fetches the rover apu json string for curiosity.
+     * @return the Json String from the api call.
+     */
     public String fetchRover() {
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);

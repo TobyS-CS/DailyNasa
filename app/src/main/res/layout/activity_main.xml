@@ -12,43 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cropToPadding="false"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/dailyPictureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="@string/daily_picture"
-        app:layout_constraintEnd_toEndOf="@+id/cometButton"
-        app:layout_constraintStart_toStartOf="@+id/cometButton"
-        app:layout_constraintTop_toBottomOf="@+id/cometButton" />
-
-    <Button
-        android:id="@+id/roverButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rover_button"
-        app:layout_constraintBottom_toTopOf="@+id/cometButton"
-        app:layout_constraintEnd_toEndOf="@+id/cometButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cometButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761" />
-
-    <Button
-        android:id="@+id/cometButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/comet_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="40dp" />
 
     <TextView
         android:id="@+id/title"
@@ -56,18 +22,73 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:fontFamily="sans-serif-black"
-        android:text="DAILY NASA"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="36sp"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
+        android:text="DAILY NASA"
         android:textAllCaps="true"
-        android:textColor="@android:color/white"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dailyPictureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="#03FFFFFF"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:text="@string/daily_picture"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/cometButton"
+        app:layout_constraintTop_toBottomOf="@+id/cometButton" />
+
+    <Button
+        android:id="@+id/roverButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:background="#03FFFFFF"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:text="@string/rover_button"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cometButton"
+        app:layout_constraintStart_toStartOf="@+id/cometButton" />
+
+    <Button
+        android:id="@+id/cometButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#03FFFFFF"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:text="@string/comet_button"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
